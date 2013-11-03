@@ -6,7 +6,7 @@ Description: "StrongLoop Suite is an open source API tier for connecting Enterpr
 Version: '1.1.0'
 License: StrongLoop License
 License-Url: 
-Source-Url: https://github.com/lulinqing/openshift-cartridge-strongloop.git
+Source-Url: https://github.com/lulinqing/sls-cartridge.git
 Vendor: strongloop.com
 Website: http://strongloop.com/
 Cartridge-Version: 1.1.0
