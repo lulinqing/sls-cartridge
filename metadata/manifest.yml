@@ -1,0 +1,95 @@
+---
+Name: strongloop
+Cartridge-Short-Name: SJS
+Display-Name: StrongLoop Suite
+Description: "StrongLoop Suite is an open source API tier for connecting Enterprise data to devices and browsers. Components include Loopback, StrongOps and StrongNode. LoopBack is an open source mobile framework, including mobile SDKs. StrongOps is the operational console specifically for StrongLoop Suite and Node.js, enabling deep performance monitoring including CPU profiling and EventLoop stats. Also included is StrongNode, a supported package of Node.js, containing certified and tested modules for developing, configuring, testing, deploying, and maintaining enterprise Node.js applications including advanced debugging, clustering, private npm registries and other enterprise tools."
+Version: '1.1.0'
+License: StrongLoop License
+License-Url: 
+Source-Url: https://github.com/lulinqing/openshift-cartridge-strongloop.git
+Vendor: strongloop.com
+Website: http://strongloop.com/
+Cartridge-Version: 1.1.0
+Compatible-Versions: []
+Cartridge-Vendor: redhat
+Categories:
+- service
+- javascript
+- nodejs
+- mobile backend as a service
+- mBasS
+- web_framework
+Help-Topics:
+  Developer Center: https://www.openshift.com/developers
+Cart-Data:
+- Key: OPENSHIFT_SJS_LOG_DIR
+  Type: environment
+  Description: Directory to store application log files.
+- Key: OPENSHIFT_TMP_DIR
+  Type: environment
+  Description: Directory to store application temporary files.
+- Key: OPENSHIFT_REPO_DIR
+  Type: environment
+  Description: Application root directory where application files reside. This directory
+    is reset every time you do a git-push
+- Key: OPENSHIFT_SJS_PORT
+  Type: environment
+  Description: Internal port to which the web-framework binds to.
+- Key: OPENSHIFT_SJS_IP
+  Type: environment
+  Description: Internal IP to which the web-framework binds to.
+- Key: OPENSHIFT_APP_DNS
+  Type: environment
+  Description: Fully qualified domain name for the application.
+- Key: OPENSHIFT_APP_NAME
+  Type: environment
+  Description: Application name
+- Key: OPENSHIFT_DATA_DIR
+  Type: environment
+  Description: Directory to store application data files. Preserved across git-pushes.
+    Not shared across gears.
+- Key: OPENSHIFT_APP_UUID
+  Type: environment
+  Description: Unique ID which identified the application. Does not change between
+    gears.
+- Key: OPENSHIFT_GEAR_UUID
+  Type: environment
+  Description: Unique ID which identified the gear. This value changes between gears.
+Provides:
+- nodejs-0.10
+- nodejs
+Scaling:
+  Min: 1
+  Max: -1
+Publishes:
+  get-doc-root:
+    Type: FILESYSTEM:doc-root
+Subscribes:
+  set-env:
+    Type: ENV:*
+    Required: false
+  set-mysql-connection-info:
+    Type: NET_TCP:db:mysql
+    Required: false
+  set-postgres-connection-info:
+    Type: NET_TCP:db:postgres
+    Required: false
+Endpoints:
+- Private-IP-Name: IP
+  Private-Port-Name: PORT
+  Private-Port: 8080
+  Public-Port-Name: PROXY_PORT
+  Protocols:
+  - http
+  - ws
+  Options:
+    primary: true
+  Mappings:
+  - Frontend: ''
+    Backend: ''
+    Options:
+      websocket: true
+  - Frontend: /health
+    Backend: ''
+    Options:
+      health: true
