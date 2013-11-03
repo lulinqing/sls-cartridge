@@ -5,12 +5,12 @@
 
 function nodejs_context {
   case "$OPENSHIFT_NODEJS_VERSION" in
-    0.10) eval $1 ;;
+    1.1.0) eval $1 ;;
   esac
 }
 
 function update-configuration {
   case "$1" in
-    0.10) set-configuration $1 native ;;
+    1.1.0) set-configuration $1 native ;;
   esac
 }
