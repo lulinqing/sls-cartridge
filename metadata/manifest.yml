@@ -22,7 +22,7 @@ Categories:
 Help-Topics:
   Developer Center: https://www.openshift.com/developers
 Cart-Data:
-- Key: OPENSHIFT_SJS_LOG_DIR
+- Key: OPENSHIFT_NODEJS_LOG_DIR
   Type: environment
   Description: Directory to store application log files.
 - Key: OPENSHIFT_TMP_DIR
